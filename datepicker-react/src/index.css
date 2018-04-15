@@ -1,9 +1,5 @@
 body {
   font-family: sans-serif;
-
-}
-
-.wrapper {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -26,6 +22,7 @@ body {
 .button {
   text-align: center;
   flex: auto;
+  cursor: pointer;
 }
 
 .month-name {

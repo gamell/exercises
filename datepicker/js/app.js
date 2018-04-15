@@ -1,7 +1,6 @@
 const datepicker = (function(){
 
   let date = new Date();
-  const highlight = new Date();
 
   const MONTHS = [
     'January',
@@ -31,14 +30,14 @@ const datepicker = (function(){
     'Saturday'
   ];
 
-  function render(date, highlight = null){
+  function render(date = new Date(), highlight = null){
 
     const year = date.getFullYear();
     const month = date.getMonth();
     const monthText = MONTHS[month];
 
     const $monthTable = document.getElementsByClassName('month')[0];
-    $monthTable.innerHTML = generateCalendarTable(date, highlight);
+    $monthTable.innerHTML = generateCalendarTable(month, year, highlight);
 
     const $monthName = document.getElementsByClassName('month-name')[0];
     $monthName.innerHTML = `${monthText} ${year}`;
@@ -46,13 +45,13 @@ const datepicker = (function(){
 
   function back(e){
     date.setMonth(date.getMonth() - 1);
-    render(date, highlight);
+    render(date, new Date());
     e.preventDefault();
   }
 
   function forward(e){
     date.setMonth(date.getMonth() + 1);
-    render(date, highlight);
+    render(date, new Date());
     e.preventDefault();
   }
 
@@ -63,14 +62,23 @@ const datepicker = (function(){
     if (e.target.classList.contains('forward')) {
       forward(e);
     }
+    if (e.target.classList.contains('day')) {
+      const newHighlight = new Date();
+      newHighlight.setFullYear(date.getFullYear());
+      newHighlight.setMonth(date.getMonth());
+      newHighlight.setDate(e.target.innerHTML);
+      render(date, newHighlight);
+      //alert(`You selected the ${e.target.innerHTML} day`);
+    }
   }
 
-  function generateCalendarTable(date, highlight = null){
+  function generateCalendarTable(month, year, highlight = null){
     let cal = [[]];
-    const month = date.getMonth();
-    const isHighlight = month === highlight.getMonth() ?
-      (day) => day === highlight.getDate() :
-      (_) => false;
+    const isHighlight = (day) => (
+      year === highlight.getFullYear() &&
+      month === highlight.getMonth() &&
+      day === highlight.getDate()
+    )
     // figure out first day of the Month
     const auxDate = (new Date())
     auxDate.setMonth(month)
@@ -90,7 +98,7 @@ const datepicker = (function(){
       cal[row][(offset + day) % 7] = day + 1;
     }
     return cal.map((row) => `<tr>${row.map((day) =>
-      `<td class="day-${day-1} ${isHighlight(day) ? 'highlight' : ''}">${day}</td>`
+      `<td class="day day-${day-1} ${isHighlight(day) ? 'highlight' : ''}">${day}</td>`
     ).join('')}</tr>`).join('');
   }
 
@@ -98,7 +106,7 @@ const datepicker = (function(){
     // setup eventListener
     const $datepicker = document.getElementsByClassName('datepicker')[0];
     $datepicker.addEventListener('click', handleClick);
-    render(date, highlight);
+    render(date, new Date());
   }
 
   return {
