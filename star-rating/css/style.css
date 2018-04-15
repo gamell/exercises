@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  font-size: 4em;
+}
+
+#star-rating {
+  list-style: none;
+  flexbox: 1;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.star {
+  color: gold;
+  cursor: pointer;
+}
+
+.star-empty::before {
+  content: '☆';
+}
+
+.star-empty:hover::before,
+.star-empty:hover ~ .star-empty::before {
+  content: '★';
+}
+
+.star-full::before {
+  content: '★';
+}
