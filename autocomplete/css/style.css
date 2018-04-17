@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 12px;
+}
+
+body {
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.autocomplete {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.autocomplete-input {
+  width: 30vw;
+  font-size: 3em;
+  padding-left: 0.2em;
+}
+
+.suggestions {
+  width: 100%;
+  list-style: none;
+  border: 1px solid #ccc;
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: white;
+  margin: 0;
+  padding: 0.2em;
+  font-size: 3em;
+  z-index: 1;
+}
+
+.shown {
+  display: block;
+}
+
+.highlighted {
+  background: #ccc;
+}
