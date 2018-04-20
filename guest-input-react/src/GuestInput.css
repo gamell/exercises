@@ -1,0 +1,37 @@
+* {
+  box-sizing: content-box;
+}
+
+body {
+  font-size: 1em;
+}
+
+.guest-input {
+  position: relative;
+  line-height: 1em;
+}
+
+.guest-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0;
+  padding: 1em;
+}
+
+.guest-panel--shown {
+  display: block;
+}
+
+.guest-panel__setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.guest-panel__setting-name {
+
+}
