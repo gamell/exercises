@@ -1,0 +1,235 @@
+<html>
+  <head>
+    <style>
+      *{
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      .joan{
+        font-size: 3em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: 10s infinite alternate floating;
+      }
+
+      @keyframes floating{
+        from {
+          top:0;
+          left: 0;
+          transform: rotate(0deg);
+        }
+
+        to{
+          top: 100%;
+          left: 100%;
+          transform: rotate(270deg);
+        }
+      }
+
+      #rooms {
+        margin: 0 auto;
+        max-width: 960px;
+        padding: 1em;
+      }
+      .room{
+        list-style: none;
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 1em;
+        margin: 0 1% 1vw 0;
+      }
+      .thumbnail{
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 180px;
+        transition: 1s;
+      }
+      .thumbnail:hover{
+        transition: 1s;
+        opacity: 0;
+      }
+      .room h4{
+        margin: 0.5em 0 0.1em 0;
+      }
+      .sub-header{
+        overflow: auto;
+        font-size: 0.7em;
+        color: #444;
+      }
+      .star-rating{
+        margin: 0 auto;
+        float: left;
+        unicode-bidi: bidi-override;
+        color: #c5c5c5;
+        height: 25px;
+        width: 100px;
+        position: relative;
+        padding: 0;
+      }
+      .star-rating span{
+        margin: 0 0.05em;
+      }
+      .star-ratings-top{
+        color: #e7711b;
+        padding: 0;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        /*text-shadow: 0px 1px 0 #a2a2a2;*/
+      }
+      .star-ratings-bottom{
+        padding: 0;
+        display: block;
+        z-index: 0;
+      }
+      .review-counter{
+        float: right;
+        margin: 0;
+      }
+      .description{
+        margin: 1em 0 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      @media (min-width: 400px){
+        .room{
+          float: left;
+          width: 49%;
+        }
+      }
+      @media (min-width: 600px){
+        .room{
+          float: left;
+          width: 32%;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <span class="joan">JOAN</span>
+    <ul id="rooms">
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 60%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+      <li class="room">
+        <img src="./thumbnail.jpg" alt="room thumbnail" class="thumbnail" />
+        <h4>Room title</h4>
+        <div class="sub-header">
+          <div class="star-rating">
+            <div class="star-ratings-top" style="width: 30%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p class="review-counter">650 reviews</p>
+        </div>
+        <p class="description">
+          This is a very beautiful shared room next to Kahilea beach. bla bla bla bla bla
+        </p>
+      </li>
+    <ul>
+    <script>
+      'use strict'
+    </script>
+  </body>
+</html>

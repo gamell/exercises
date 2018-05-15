@@ -1,0 +1,11 @@
+Hi Jovan,
+
+As you can imagine, I have been thinking about the tech interviews I had at airbnb recently and I thought you might appreciate some feedback I have for you regarding those. I myself value feedback very highly as it's the only way to become better, I hope you do too:
+
+- It would be helpful if the interviewers briefly stated what are the metrics you (and your code) will be evaluated on and what are they looking to see in your code. Given the feedback you gave me - and the fact that all my technical solutions actually worked - I am quite certain that the reason why my solutions didn't meet the interviewer's expectations is because of "code cleanliness" and/or code organization - which is a very valid bar to hold. The thing is, from an interviewee perspective, unless you are told otherwise, you focus first and foremost on coding a working solution as fast as possible possibly disregarding "code cleanliness" and other code characteristics.
+- It would be helpful that if interviewers are not satisfied with the code (and there is time left for the interview), they nudged the interviewee towards what they want to see e.g. "could you improve code cleanliness?" or "how would you make this more modular for real world use?". If instead they say "great, now you have 15 minutes to ask me questions", the interviewee assumes he/she did a good job with the coding question and stops looking for ways to improve it.
+- The following feedback is for the "coding" interview with Josh Perez:
+  - He was more than 5 minutes late, which made me already wonder how much he cared about the interview.
+  - nodejs (the main tool needed to code JavaScript on the server, and the tool we had to use for the interview) was not installed in the interview computer. I did bring my computer with me so I used my laptop, but that set us back another 3 or 4 minutes.
+  - Josh took a very passive role during the interview. He was sitting in a corner of the room, not looking at my code or what I was doing (and he couldn't see the screen because it was my tiny 13" laptop as stated above). He only came to see the outcome when the code was finished or when I had some question for him. I don't know if that's the case but I felt like he didn't want to be there or he didn't care much about the interview, and it showed.
+-

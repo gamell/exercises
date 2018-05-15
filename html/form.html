@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <style>
+      *{
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      #widget-form{
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70%;
+      }
+      .widget{
+        width: 100%;
+        height: 200px;
+        border: 0;
+        text-align: center;
+      }
+      h2{
+        text-align: center;
+      }
+      .star-rating {
+        display: flex;
+        flex-flow: row-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+      .star-rating > input {
+        display: none;
+      }
+
+      .star-rating > label {
+        font-size: 3em;
+        margin: 0 0.1em;
+        color: #ddd;
+        cursor: pointer;
+      }
+
+      .dropdown-menu{
+        display: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      /***** CSS Magic to Highlight Stars on Hover *****/
+
+      .star-rating > input:checked ~ label,
+      .star-rating:not(:checked) > label:hover,
+      .star-rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
+
+      .star-rating > input:checked + label:hover,
+      .star-rating > input:checked ~ label:hover,
+      .star-rating > label:hover ~ input:checked ~ label,
+      .star-rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
+
+      @media (min-width: 600px){
+        #widget-form{
+          flex-flow: row;
+          max-width: 960px;
+        }
+        .widget{
+          width: 49%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="widget-form" method="post" action="/">
+      <fieldset class="widget">
+        <h2>Star Widget</h2>
+        <div class="star-rating">
+          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars">★</label>
+          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars">★</label>
+          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars">★</label>
+          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars">★</label>
+          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star">★</label>
+        </div>
+      </fieldset>
+      <fieldset class="widget">
+        <h2>Dropdown</h2>
+        <a href="#" class="dropdown-hook">Link</a>
+        <div class="dropdown-menu">
+          Content
+        </div>
+      </fieldset>
+      <fieldset class="widget">
+        <h2>Toggle</h2>
+      </fieldset>
+    </form>
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".dropdown-hook").click(function(){
+          $(".dropdown-menu").css('display','block');
+        })
+      });
+    </script>
+  </body>
+</html>

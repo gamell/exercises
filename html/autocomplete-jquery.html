@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      form {
+        height: 100%;
+        position: relative;
+        text-align: center;
+      }
+      .centered{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-60%, -50%);
+        border: 0;
+        width: 600px;
+      }
+      #searchbox {
+        font-size: 2em;
+        padding: 0.15em;
+        width: 400px;
+      }
+      #suggestions{
+        display: none;
+        position: absolute;
+        width: 400px;
+        border: 1px solid #CCC;
+      }
+      #suggestions li{
+        list-style: none;
+        font-family: sans-serif;
+        font-size: 1.6em;
+        padding: 0.2em;
+      }
+      #suggestions li.selected{
+        background-color: blue;
+      }
+      .btn{
+        background-color: #FF5A5F;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2em;
+        padding: 0.15em;
+        height: 1.6em;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #ff7e82;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="post" autocomplete="off">
+      <fieldset class="centered">
+        <input id="searchbox" type="text" autocomplete="off" placeholder="Serach..."/>
+        <button type="submit" class="btn" onclick="">Search</button>
+        <ul id="suggestions">
+        </ul>
+      </fieldset>
+    </form>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <script>
+      'use strict';
+
+      const json = {
+        'a': ['Andorra', 'Austria', 'Australia', 'Albania'],
+        'an': ['Andorra'],
+        'au': ['Austria', 'Australia'],
+        'aus': ['Austria', 'Australia'],
+        'aus': ['Austria', 'Australia'],
+        'aust': ['Austria', 'Australia'],
+        'austr': ['Austria', 'Australia'],
+        'austra': ['Australia'],
+        'austri': ['Austria']
+      }
+      window.onload = function(){
+        var searchboxElem = $('#searchbox');
+        var suggestionListElem = $('#suggestions');
+        var buttonElem = $('.btn');
+        var model = {
+          query: '',
+          selection: null,
+          suggestions: []
+        };
+
+        // stub function
+        function getSuggestions(query){
+          return json[query.toLowerCase()];
+        }
+
+        function highlightSelectedSuggestion(){
+          var suggestionItemElems = suggestionListElem.children();
+          suggestionItemElems.removeClass('selected').eq(model.selection).addClass('selected');
+        }
+
+        function up(){
+          if(model.selection === null){
+            model.selection = model.suggestions.length-1;
+          } else {
+            model.selection = Math.max(0, model.selection-1);
+          }
+          highlightSelectedSuggestion();
+        }
+
+        function down(){
+          if(model.selection === null){
+            model.selection = 0;
+          } else {
+            model.selection = Math.max(model.suggestions.length-1, model.selection+1);
+          }
+          highlightSelectedSuggestion();
+        }
+
+        function close(){
+          suggestionListElem.hide();
+        }
+
+        function submit(e){
+          var query = model.suggestions[model.selection] ? model.suggestions[model.selection] : model.query;
+          alert('Submit query: ' + query);
+        }
+
+        function highlight(s, query){
+          var start = s.toLowerCase().indexOf(query.toLowerCase(),0);
+          var highlight = s;
+          if(start > -1){
+            highlight = s.slice(0,start);
+            highlight += '<strong>'+s.slice(start, start+query.length)+'</strong>';
+            highlight += s.slice(start+query.length, s.length);
+          }
+          return highlight;
+        }
+
+        function showSuggestions(){
+          suggestionListElem.empty();
+          suggestionListElem.css('display','block');
+          var position = searchboxElem.position();
+          suggestionListElem.css('left', position.left);
+          suggestionListElem.css('top', position.top);
+        }
+
+        function renderSuggestions(){
+          showSuggestions();
+          model.suggestions.forEach(function(s){
+            var suggestionHtml = highlight(s, model.query);
+            var suggestionItemElem = $('<li>');
+            suggestionItemElem.html(suggestionHtml);
+            suggestionListElem.append(suggestionItemElem);
+          });
+
+        }
+
+        function search(){
+          if(model.query === searchboxElem.val()) return;
+          model.query = searchboxElem.val();
+          model.suggestions = getSuggestions(model.query);
+          if(model.suggestions){
+            renderSuggestions();
+          } else {
+            close();
+          }
+        }
+
+        function keyDown(e){
+          var key = window.event ? e.keyCode : e.which;
+          if(key === 13 || key === 27 || key === 38 || key === 40){
+            e.preventDefault();
+          }
+          switch(key){
+            case 13: return submit();
+            case 27: return close();
+            case 38: return up();
+            case 40: return down();
+          }
+        };
+
+        function keyUp(e){
+          var key = window.event ? e.keyCode : e.which;
+          // would need to also exclude non-printable chars
+          if(key && key !== 38 && key !== 40 & key !== 27 && key !== 13){
+            return search();
+          }
+        }
+
+        function focus(e){
+          if(model.query.length > 0){
+            return showSuggestions();
+          }
+        }
+
+        searchboxElem.on('keydown', keyDown);
+        searchboxElem.on('keyup', keyUp);
+        searchboxElem.on('focus', focus);
+        searchboxElem.on('blur', close);
+        buttonElem.on('click', submit);
+      };
+    </script>
+  </body>
+</html>
