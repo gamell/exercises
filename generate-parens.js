@@ -15,3 +15,5 @@ var generateParenthesis = function(n) {
     }
     return Array.from(s);
 };
+
+console.log(generateParenthesis(2));

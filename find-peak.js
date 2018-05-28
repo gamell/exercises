@@ -13,3 +13,5 @@ var findPeakElement = function(nums) {
   }
   return idx;
 };
+
+console.log(findPeakElement([1,2,3,4,5,9,0,10,11,2,3,5,7,20]));

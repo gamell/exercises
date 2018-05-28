@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/search-for-a-range/description/
+
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -24,3 +26,42 @@ var searchRange = function(nums, target) {
 };
 
 console.log(searchRange([5,7,7,8,8,10], 8));
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var searchRange2 = function(nums, target) {
+  let lo = 0;
+  let hi = nums.length - 1;
+  let mid = 0;
+  let found = false;
+  // The usual binary search and accounting for rotation.
+  while(lo <= hi){
+    mid = (lo+hi)/2 | 0;
+    if(nums[mid] === target) {
+        found = true;
+        break;
+    }
+    if(nums[mid] < target) lo = mid+1;
+    else hi = mid-1;
+  }
+  
+  if (found) {
+      lo = mid;
+      hi = mid;
+      while(lo - 1 >= 0 && nums[lo - 1] === nums[mid]) {
+          lo--;
+      }
+
+      while(hi + 1 < nums.length && nums[hi + 1] === nums[mid]) {
+          hi++;
+      }
+      return [lo, hi]
+  } else {
+      return [-1, -1];
+  }
+  
+};

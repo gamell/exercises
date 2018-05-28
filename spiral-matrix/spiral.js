@@ -8,30 +8,31 @@ const matrix = [
 ];
 
 //assuming square matrix
-function spiral(m, res = "") {
-  if(m.length < 2) { // base case
-    return res + m.join(' ');
+function spiralOrder(m, res = []) {
+  if(m.length === 0) return res;
+  if(m.length === 1) { // base case
+    return res.concat(m[0]);
   }
-  let top = "";
-  let bottom = "";
-  let left = "";
-  let right = "";
+  let top = [];
+  let bottom = [];
+  let left = [];
+  let right = [];
   let next = [];
   for (let row = 0; row < m.length; row++) {
     if (row === 0) {
-      top = m[row].join(' ');
+      top = m[row];
       continue;
     } else if (row === m.length - 1) {
-      bottom = m[row].reverse().join(' ');
+      bottom = m[row].reverse();
       continue;
     }
     next.push([]);
     for (let col = 0; col < m[row].length; col++) {
-      if (col === 0 ){
-        left = m[row][col] + ' ' + left;
+      if (col === m[row].length - 1) {
+        right = [...right, m[row][col]];
         continue;
-      } else if (col === m[row].length - 1) {
-        right = right + ' ' + m[row][col];
+      } else if (col === 0 ){
+        left = [m[row][col], ...left];
         continue;
       }
       next[row-1] = next[row-1] || [];
@@ -39,12 +40,12 @@ function spiral(m, res = "") {
     }
   }
 
-  res += [top, right, bottom, left].join(' ');
+  res = res.concat(top, right, bottom, left);
 
   console.log(`Res: ${res}`);
   console.log(`Next: ${JSON.stringify(next)}`);
 
-  return spiral(next, res);
+  return spiralOrder(next, res);
 }
 
-console.log(spiral(matrix));
+console.log(spiralOrder(matrix));
