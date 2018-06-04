@@ -1,4 +1,4 @@
-class Solution {
+class RecSolution {
         
     private int numCombos(int[] coins, int amount, int index, HashMap<String, Integer> seen) {
         if (amount == 0) return 1;

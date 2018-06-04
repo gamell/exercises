@@ -8,7 +8,8 @@
 
 # Why?
 
-- I really don't like PowerPoint
+- I don't like PowerPoint
+- I love `Markdown`
 
 ## Also, I wondered:
 
@@ -17,3 +18,4 @@
   - Version control
 - Why can't I edit my presentations on my text editor?
 
+# :bulb:
